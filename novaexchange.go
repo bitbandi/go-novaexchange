@@ -57,7 +57,7 @@ func (c *NovaExchange) SetDebug(enable bool) {
 
 // GetBalances is used to retrieve all balances from your account
 func (b *NovaExchange) GetBalances() (balances []Balance, err error) {
-	r, err := b.client.do("GET", "private/getbalances/", "", true)
+	r, err := b.client.do("POST", "private/getbalances/", "", true)
 	if err != nil {
 		return
 	}
@@ -75,7 +75,7 @@ func (b *NovaExchange) GetBalances() (balances []Balance, err error) {
 // Getbalance is used to retrieve the balance from your account for a specific currency.
 // currency: a string literal for the currency (ex: LTC)
 func (b *NovaExchange) GetBalance(currency string) (balance Balance, err error) {
-	r, err := b.client.do("GET", "private/getbalance/"+strings.ToUpper(currency)+"/", "", true)
+	r, err := b.client.do("POST", "private/getbalance/"+strings.ToUpper(currency)+"/", "", true)
 	if err != nil {
 		return
 	}
@@ -93,7 +93,7 @@ func (b *NovaExchange) GetBalance(currency string) (balance Balance, err error) 
 // GetDepositAddress is sed to generate or retrieve an address for a specific currency.
 // currency a string literal for the currency (ie. BTC)
 func (b *NovaExchange) GetDepositAddress(currency string) (address string, err error) {
-	r, err := b.client.do("GET", "private/getdepositaddress/"+strings.ToUpper(currency)+"/", "", true)
+	r, err := b.client.do("POST", "private/getdepositaddress/"+strings.ToUpper(currency)+"/", "", true)
 	if err != nil {
 		return
 	}
